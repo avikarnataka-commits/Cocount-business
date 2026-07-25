@@ -83,12 +83,17 @@ quoteForm.addEventListener('submit', async (e) => {
       body: new FormData(quoteForm),
     });
 
-    if (!response.ok) throw new Error('Request failed');
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok || (data && data.success === 'false')) {
+      throw new Error((data && data.message) || 'Request failed');
+    }
 
     quoteFormStatus.textContent = 'Thank you for your inquiry! Our export team will get back to you within 24 hours.';
     quoteFormStatus.classList.add('success');
     quoteForm.reset();
   } catch (err) {
+    console.error('Quote form submission error:', err);
     quoteFormStatus.textContent = 'Sorry, something went wrong sending your request. Please email us directly at exports@naturesnestglobal.com.';
     quoteFormStatus.classList.add('error');
   } finally {
