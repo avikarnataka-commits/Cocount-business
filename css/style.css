@@ -189,7 +189,7 @@ h1, h2, h3, h4 { line-height: 1.25; }
 
 /* ===================== Hero ===================== */
 .hero {
-  background: url('../images/WhatsApp Image 2026-07-25 at 1.01.02 PM.jpeg') center/cover no-repeat;
+  background: url('../images/herobanner.jpeg') center/cover no-repeat;
   color: var(--white);
   padding: 90px 0;
 }

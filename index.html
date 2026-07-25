@@ -17,9 +17,9 @@
   <div class="container top-bar-inner">
     <p class="tagline">Nature's Finest, Delivered Worldwide.</p>
     <div class="top-bar-contact">
-      <a href="mailto:exports@naturesnestglobal.com"><i class="fa-regular fa-envelope"></i> exports@naturesnestglobal.com</a>
-      <a href="tel:+917204868557"><i class="fa-solid fa-phone"></i> +91 72048 68557</a>
-      <a href="https://wa.me/917204868557?text=Hi%2C%20I%27m%20interested%20in%20your%20products%20and%20would%20like%20a%20quote." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="mailto:exports@naturesnestglobal.com" data-cfg="email-link"><i class="fa-regular fa-envelope"></i> <span data-cfg="email-text">exports@naturesnestglobal.com</span></a>
+      <a href="tel:+917204868557" data-cfg="tel-link"><i class="fa-solid fa-phone"></i> <span data-cfg="tel-text">+91 72048 68557</span></a>
+      <a href="https://wa.me/917204868557?text=Hi%2C%20I%27m%20interested%20in%20your%20products%20and%20would%20like%20a%20quote." target="_blank" rel="noopener" data-cfg="whatsapp-link"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
       <span class="lang"><i class="fa-solid fa-globe"></i> English <i class="fa-solid fa-chevron-down"></i></span>
     </div>
   </div>
@@ -29,7 +29,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="#home" class="logo">
-      <img src="images/WhatsApp Image 2026-07-25 at 1.44.57 PM.jpeg" alt="Natures Nest Global LLP logo" class="logo-icon">
+      <img src="images/logo.jpeg" alt="Natures Nest Global LLP logo" class="logo-icon" data-cfg="logo-src">
       <span class="logo-text">
         NATURES NEST <span>GLOBAL LLP</span>
         <small>Premium Indian Exports | Global Sourcing Solutions</small>
@@ -342,7 +342,7 @@
       <h2>LET'S BUILD A <span>GLOBAL PARTNERSHIP</span></h2>
       <p>Whether you are an importer, distributor, retailer, or private-label brand, we welcome the opportunity to discuss your sourcing requirements.</p>
 
-      <form class="quote-form" id="quoteForm" action="https://formsubmit.co/ajax/exports@naturesnestglobal.com" method="POST">
+      <form class="quote-form" id="quoteForm" action="https://formsubmit.co/ajax/exports@naturesnestglobal.com" method="POST" data-cfg="form-action">
         <input type="hidden" name="_subject" value="New Quote Request - Natures Nest Global">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
@@ -401,7 +401,7 @@
   <div class="container footer-grid">
     <div class="footer-col footer-brand">
       <a href="#home" class="logo">
-        <img src="images/WhatsApp Image 2026-07-25 at 1.44.57 PM.jpeg" alt="Natures Nest Global LLP logo" class="logo-icon">
+        <img src="images/logo.jpeg" alt="Natures Nest Global LLP logo" class="logo-icon" data-cfg="logo-src">
         <span class="logo-text">
           NATURES NEST <span>GLOBAL LLP</span>
         </span>
@@ -452,8 +452,8 @@
       <h4>Get In Touch</h4>
       <ul class="footer-contact">
         <li><i class="fa-solid fa-location-dot"></i> Natures Nest Global LLP, India</li>
-        <li><i class="fa-solid fa-phone"></i> +91 72048 68557</li>
-        <li><i class="fa-regular fa-envelope"></i> export@naturesnestglobal.com</li>
+        <li><i class="fa-solid fa-phone"></i> <span data-cfg="tel-text">+91 72048 68557</span></li>
+        <li><i class="fa-regular fa-envelope"></i> <span data-cfg="email-text">exports@naturesnestglobal.com</span></li>
         <li><i class="fa-solid fa-globe"></i> www.naturesnestglobal.com</li>
       </ul>
     </div>
@@ -464,12 +464,13 @@
   </div>
 </footer>
 
-<a href="https://wa.me/917204868557?text=Hi%2C%20I%27m%20interested%20in%20your%20products%20and%20would%20like%20a%20quote." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/917204868557?text=Hi%2C%20I%27m%20interested%20in%20your%20products%20and%20would%20like%20a%20quote." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" data-cfg="whatsapp-link">
   <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <button id="backToTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
+<script src="js/config.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

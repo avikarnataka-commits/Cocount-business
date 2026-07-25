@@ -1,3 +1,32 @@
+// Apply centralized site configuration (see js/config.js) to every element
+// that references it, so contact details / links / images only ever need
+// to be updated in one place.
+document.querySelectorAll('[data-cfg="whatsapp-link"]').forEach((el) => {
+  el.href = SITE_CONFIG.whatsappLink;
+});
+document.querySelectorAll('[data-cfg="tel-link"]').forEach((el) => {
+  el.href = `tel:${SITE_CONFIG.phone}`;
+});
+document.querySelectorAll('[data-cfg="tel-text"]').forEach((el) => {
+  el.textContent = SITE_CONFIG.phoneDisplay;
+});
+document.querySelectorAll('[data-cfg="email-link"]').forEach((el) => {
+  el.href = `mailto:${SITE_CONFIG.email}`;
+});
+document.querySelectorAll('[data-cfg="email-text"]').forEach((el) => {
+  el.textContent = SITE_CONFIG.email;
+});
+document.querySelectorAll('[data-cfg="logo-src"]').forEach((el) => {
+  el.src = SITE_CONFIG.logoImage;
+});
+document.querySelectorAll('[data-cfg="form-action"]').forEach((el) => {
+  el.action = SITE_CONFIG.formsubmitEndpoint;
+});
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+  heroSection.style.backgroundImage = `url('${SITE_CONFIG.heroImage}')`;
+}
+
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -94,7 +123,7 @@ quoteForm.addEventListener('submit', async (e) => {
     quoteForm.reset();
   } catch (err) {
     console.error('Quote form submission error:', err);
-    quoteFormStatus.textContent = 'Sorry, something went wrong sending your request. Please email us directly at exports@naturesnestglobal.com.';
+    quoteFormStatus.textContent = `Sorry, something went wrong sending your request. Please email us directly at ${SITE_CONFIG.email}.`;
     quoteFormStatus.classList.add('error');
   } finally {
     submitBtn.disabled = false;
