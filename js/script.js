@@ -1,0 +1,98 @@
+// Set current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const mainNav = document.getElementById('mainNav');
+
+navToggle.addEventListener('click', () => {
+  mainNav.classList.toggle('open');
+});
+
+// Toggle dropdown on mobile tap
+document.querySelectorAll('.has-dropdown > a').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    if (window.innerWidth <= 860) {
+      e.preventDefault();
+      link.parentElement.classList.toggle('open');
+    }
+  });
+});
+
+// Close mobile nav when a link is clicked
+document.querySelectorAll('.main-nav a:not(.has-dropdown > a)').forEach((link) => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('open');
+  });
+});
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Highlight active nav link based on scroll position
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.main-nav > ul > li > a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Quote form submit handler - sends data to exports@naturesnestglobal.com via FormSubmit
+const quoteForm = document.getElementById('quoteForm');
+const quoteFormStatus = document.getElementById('quoteFormStatus');
+
+quoteForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const submitBtn = quoteForm.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Sending...';
+  quoteFormStatus.textContent = '';
+  quoteFormStatus.className = 'form-status';
+
+  try {
+    const response = await fetch(quoteForm.action, {
+      method: 'POST',
+      headers: { Accept: 'application/json' },
+      body: new FormData(quoteForm),
+    });
+
+    if (!response.ok) throw new Error('Request failed');
+
+    quoteFormStatus.textContent = 'Thank you for your inquiry! Our export team will get back to you within 24 hours.';
+    quoteFormStatus.classList.add('success');
+    quoteForm.reset();
+  } catch (err) {
+    quoteFormStatus.textContent = 'Sorry, something went wrong sending your request. Please email us directly at exports@naturesnestglobal.com.';
+    quoteFormStatus.classList.add('error');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
+  }
+});
