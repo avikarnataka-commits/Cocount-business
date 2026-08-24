@@ -11,7 +11,11 @@ const SITE_CONFIG = {
   whatsappMessage: "Hi, I'm interested in your products and would like a quote.",
   formsubmitEndpoint: 'https://formsubmit.co/ajax/exports@naturesnestglobal.com',
   logoImage: 'images/logo.jpeg',
-  heroImage: 'images/herobanner.jpeg',
+  heroImages: {
+    desktop: 'images/bannerchanges/Desktop%20Supportive.png',
+    tablet: 'images/bannerchanges/Tab%20Supportive.png',
+    mobile: 'images/bannerchanges/Mobile%20Supportive.png',
+  },
 };
 
 SITE_CONFIG.whatsappLink = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappMessage)}`;
